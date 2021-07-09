@@ -10,7 +10,7 @@
 * Usando curl
 ```
 
-curl -H 'Accept: application/json; indent=4' -u user:pass http://127.0.0.1:8000/users/
+curl -H 'Accept: application/json; indent=4' -u user:pass http://127.0.0.1:8000/api/users/
 
 
 curl -H 'Accept: application/json; indent=4' -iX POST -d 'telefono=1909091&tipo=personal&estudiante=http://127.0.0.1:8000/api/estudiantes/4/' -u user:pass 127.0.0.1:8000/api/numerost/

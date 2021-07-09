@@ -80,6 +80,5 @@ Nota: Un departamento pertenece a un edificio
 - Crear una aplicación en el proyecto den Django.
 - Generar el modelo de la aplicación usando las entidades descritas.
 - Activar la interfaz de administración de la aplicación de Django.
-- Generar procesos que permitan Ingresar, editar, eliminar datos a las entidades.
 - Agregar servicios web que permitan lista; crear; actualizar y eleminar entidades (todas deben tener acceso con autentificación)
 - Crear una aplicación en Flask que permita listar Edificios y Departamentos, haciendo uso de los servicios web creados en el proyecto de Django.

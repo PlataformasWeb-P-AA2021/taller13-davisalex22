@@ -1,0 +1,82 @@
+{% extends "master.html" %}
+
+{% block title %}
+Listado de Estudiantes | {{ block.super }}
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-around">
+  <div class="col-8">
+    <div class="card text-center">
+      <div class="card-header">
+        Número de Edificios {{ numEdificios }}
+      </div>
+      <div class="card-body">
+        <div class="row justify-content-around">
+          <div class="col-4">
+            <a href="{% url 'agregarEdificio' %}" class="btn btn-secondary" role="button" aria-pressed="true">Agregar
+              Edificio</a>
+          </div>
+          <div class="col-4">
+            <a href="{% url 'agregarDepartamento' %}" class="btn btn-secondary" role="button"
+              aria-pressed="true">Agregar Departamento</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><br>
+<div class="container">
+  <table id="tabla_datos" class="table table-striped table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th>Edificio</th>
+        <th>Dirección</th>
+        <th>Ciudad</th>
+        <th>Tipo</th>
+        <th>Departamentos</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    {% for e in edificios %}
+    <tr>
+      <td> {{e.nombre}}</td>
+      <td> {{e.direccion}}</td>
+      <td> {{e.ciudad}}</td>
+      <td> {{e.tipo}}</td>
+      <td>
+        <span>[<a
+          href="{% url 'agregarDepartamentoEdificio' e.id %}">Agregar Departamento</a>]</span>
+        <ul>
+          {% for d in e.departamentos.all %}                
+            <li>Propietario: {{d.propietario}}</li>
+            <ul>             
+              <li>Costo: {{d.costo}}</li>
+              <li>Número de cuartos: {{d.numCuartos}}</li>
+              <li>[<a
+                href="{% url 'editarDepartamento' d.id %}">editar</a>] - [<a
+                href="{% url 'eliminarDepartamento' d.id %}"
+                onclick="return confirm('¿Está seguro de la eliminación?')">eliminar</a>]</span></li>
+            </ul>   
+            {% endfor %}
+        </ul>
+      </td>
+      <td>
+        <div class="row justify-content-center ">
+          <a href="{% url 'obtenerEdificio' e.id %}" class="btn btn-info" role="button" aria-pressed="true">Ver</a><br>
+          <a href="{% url 'editarEdificio' e.id %}" class="btn btn-warning" role="button" aria-pressed="true">Editar</a>
+          <a href="{% url 'eliminarEdificio' e.id %}" class="btn btn-danger" role="button" aria-pressed="true"
+            onclick="return confirm('¿Está seguro de la eliminación?')">Eliminar</a>
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#tabla_datos').DataTable();
+  });
+</script>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "master.html" %}
+
+{% block content %}
+
+<div class="container">
+  <h2>Agregar Edificio</h2>
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class='wrapper-dos-columnas'>
+      <div class='row'>
+        <div class='column'>
+          <div class='izquierda-column'>
+            <br>
+            <div class="fieldWrapper">
+              {{ formulario.nombre.errors }}
+              <label for="{{ formulario.nombre.id_for_label }}">Ingrese el nombre del edificio: </label>
+              {{ formulario.nombre }}
+            </div>
+            <br>
+            <br>
+            {{ formulario.non_field_errors }}
+            <div class="fieldWrapper">
+              {{ formulario.direccion.errors }}
+              <label for="{{ formulario.direccion.id_for_label }}">Ingrese la direccion del edificio: </label>
+              {{ formulario.direccion }}
+            </div>
+            <br>
+            <br>
+          </div>
+        </div>
+        <div class='column'>
+          <div class='derecha-column'>
+            <br>
+            <div class="fieldWrapper">
+              {{ formulario.ciudad.errors }}
+              <label for="{{ formulario.ciudad.id_for_label }}">Ingrese la ciudad: </label>
+              {{ formulario.ciudad }}
+            </div>
+            <br>
+            <br>
+            <div class="fieldWrapper">
+              {{ formulario.tipo.errors }}
+              <label for="{{ formulario.tipo.id_for_label }}">Elija el tipo correspondiente: </label>
+              {{ formulario.tipo}}
+            </div>
+          </div>
+          <br>
+          <br>
+          <div><input type='submit' value='Agregar' /></div>
+        </div>
+      </div>
+  </form>
+</div>
+{% endblock %}
